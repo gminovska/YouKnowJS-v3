@@ -1,1 +1,3 @@
-# YouKnowJS-v3
+# YouKnowJS
+
+JS related quizzes.
