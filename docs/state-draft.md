@@ -68,12 +68,28 @@ state = {
     * set state.errors.onLogin to true
 
 ### Fetch general info about all quizzes
-1. Dispatch `FETCH_ALL_QUIZZES_REQUEST` action
+1. User clicks on "Take a quiz" button
+2. Dispatch `FETCH_ALL_QUIZZES_REQUEST` action
   * set state.loaders.onQuizzes to true
-2. Dispatch one of:
+3. Dispatch one of:
   - `FETCH_ALL_QUIZZES_SUCCESS` action
     * set state.loaders.onQuizzes to false
     * set state.quizzes to fetched quizzes
   - `FETCH_ALL_QUIZZES_FAILURE` action
     * set state.loaders.onQuizzes to false
     * set state.errors.onQuizzes to true
+    * redirect user to some error screen
+      - on componentDidMount set state.errors.onQuizzes to false
+
+### Fetch info about current quiz
+1. User picks a quiz
+2. Dispatch `CLEAR_ERROR_MSG` action (onCurrentQuiz)
+3. Dispatch `FETCH_CURRENT_QUIZ_REQUEST` action
+  * set state.loaders.onCurrentQuiz to true
+4. Dispatch one of:
+  - `FETCH_CURRENT_QUIZ_SUCCESS` action
+    * set state.loaders.onCurrentQuiz to false
+    * set state.currentQuiz to fetched Object
+  - `FETCH_CURRENT_QUIZ_FAILURE` action
+    * set state.loaders.onCurrentQuiz to false
+    * set state.errors.onCurrentQuiz to true
