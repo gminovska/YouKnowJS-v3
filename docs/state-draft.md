@@ -69,7 +69,7 @@ state = {
 
 ### Logout User
 1. User presses a logout button
-2. Dispatch `USER_LOGOUT_REQUEST` action
+2. Dispatch `USER_LOGOUT` action
   * set state.user to empty (initial state)
 
 ### Fetch general info about all quizzes
