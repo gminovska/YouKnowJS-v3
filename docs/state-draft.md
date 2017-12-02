@@ -67,6 +67,11 @@ state = {
     * set state.loaders.onLogin to false
     * set state.errors.onLogin to true
 
+### Logout User
+1. User presses a logout button
+2. Dispatch `USER_LOGOUT_REQUEST` action
+  * set state.user to empty (initial state)
+
 ### Fetch general info about all quizzes
 1. User clicks on "Take a quiz" button
 2. Dispatch `FETCH_ALL_QUIZZES_REQUEST` action
