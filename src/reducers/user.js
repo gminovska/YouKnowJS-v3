@@ -9,14 +9,14 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         isLoggedIn: true,
-        name: action.name,
+        name: action.payload.name,
       };
 
     case 'USER_LOGIN_SUCCESS':
       return {
         ...state,
         isLoggedIn: true,
-        name: action.name,
+        name: action.payload.name,
       };
 
     default:
