@@ -46,3 +46,11 @@ describe('User login actions', () => {
     });
   });
 });
+
+describe('User logout action', () => {
+  it('USER_LOGOUT', () => {
+    expect(a.userLogout()).toEqual({
+      type: 'USER_LOGOUT',
+    });
+  });
+});
