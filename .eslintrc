@@ -19,6 +19,7 @@
             "MethodDefinition": true
         }
     }],
+    "linebreak-style":"off",
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }]
   }
 }
