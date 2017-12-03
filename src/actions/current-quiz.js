@@ -1,5 +1,6 @@
-export const fetchQuizRequest = () => ({
+export const fetchQuizRequest = id => ({
   type: 'FETCH_CURRENT_QUIZ_REQUEST',
+  payload: id,
 });
 
 export const fetchQuizSuccess = currentQuiz => ({
