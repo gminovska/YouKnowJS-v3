@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { FormControl, FormGroup, ControlLabel, Button } from 'react-bootstrap';
+import { auth } from 'firebase';
 
-import { userSignupRequest } from '../actions/user';
+import { userSignupRequest, setUser } from '../actions/user';
 
 class Tester extends React.Component {
   /**
@@ -15,6 +16,16 @@ class Tester extends React.Component {
       name: '',
       pass: '',
     };
+  }
+  
+  componentDidMount = () => {
+    this.authListener = auth().onAuthStateChanged((user) => {
+      this.props.update(user);
+    });
+  }
+
+  componentWillUnmount = () => {
+    this.authListener.off();
   }
 
   handleNameChange = (e) => {
@@ -67,7 +78,9 @@ class Tester extends React.Component {
 Tester.propTypes = {
   signup: PropTypes.func.isRequired,
   error: PropTypes.string,
+  update: PropTypes.func.isRequired,
 };
+
 
 const mapStateToProps = state => ({
   error: state.errors.message,
@@ -75,6 +88,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   signup(name, pass) {
     dispatch(userSignupRequest(name, pass));
+  },
+  update(user) {
+    dispatch(setUser(user));
   },
 });
 

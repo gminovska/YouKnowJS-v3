@@ -33,3 +33,8 @@ export const userLoginFailure = error => ({
 export const userLogout = () => ({
   type: 'USER_LOGOUT',
 });
+
+export const setUser = user => ({
+  type: 'SET_USER',
+  payload: user,
+});
