@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { fetchQuizzesRequest } from '../actions/quizzes';
+import { fetchQuizRequest } from '../actions/current-quiz';
 
 class Tester extends React.Component {
   render() {
@@ -21,7 +21,7 @@ Tester.propTypes = {
 const mapStateToProps = () => ({});
 const mapDispatchToProps = dispatch => ({
   fetch() {
-    dispatch(fetchQuizzesRequest());
+    dispatch(fetchQuizRequest('wqpofew'));
   },
 });
 
