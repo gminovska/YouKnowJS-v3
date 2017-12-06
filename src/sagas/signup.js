@@ -12,7 +12,7 @@ export function* signupUser(action) {
   try {
     const authUser = firebase.auth();
     const user = yield authUser.createUserWithEmailAndPassword(action.email, action.password);
-    
+
     yield put(userSignupSuccess(user));
   } catch (e) {
     yield put(userSignupFailure(e));
