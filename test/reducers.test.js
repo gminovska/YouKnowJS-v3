@@ -24,18 +24,32 @@ describe('Current quiz reducer', () => {
   it('FETCH_CURRENT_QUIZ_SUCCESS action', () => {
     const reducer = currentQuizReducer;
     const action = fetchQuizSuccess;
-    const answers = {
-      text: 'Yes, you are so smart',
-      correct: true,
-      checked: false,
-    };
     const payload = {
-      fo4: 1,
-      ru489: 2,
-      answers,
+      fo4: {
+        explanation: 'blabla',
+        multipleChoice: true,
+        text: 'This is a question?',
+        answers: {
+          kjdkjwbd: {
+            text: 'Yes, you are so smart',
+            correct: true,
+            checked: false,
+          },
+        },
+      },
     };
     const result = reducer({}, action(payload));
-    expect(result).toEqual(expect.arrayContaining([1, 2, 3]));
-    expect(result).toHaveLength(3);
+    expect(result).toEqual(expect.arrayContaining([expect.objectContaining({
+      explanation: 'blabla',
+      multipleChoice: true,
+      text: 'This is a question?',
+      answers: expect.arrayContaining([
+        expect.objectContaining({
+          text: 'Yes, you are so smart',
+          correct: true,
+          checked: false,
+        }),
+      ]),
+    })]));
   });
 });
