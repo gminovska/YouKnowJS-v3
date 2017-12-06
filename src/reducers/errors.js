@@ -3,6 +3,7 @@ const initialState = {
   onLogin: false,
   onQuizzes: false,
   onCurrentQuiz: false,
+  message: '',
 };
 
 const reducer = (state = initialState, action) => {
@@ -11,12 +12,14 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         onSignup: true,
+        message: action.message,
       };
 
     case 'USER_LOGIN_FAILURE':
       return {
         ...state,
         onQuizzes: true,
+        message: action.message,
       };
 
     case 'FETCH_ALL_QUIZZES_FAILURE':

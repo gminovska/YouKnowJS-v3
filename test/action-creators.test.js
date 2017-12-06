@@ -1,7 +1,7 @@
 import * as a from '../src/actions/user';
 
 const user = { name: 'Jake', email: 'nope@donthave.com' };
-
+const error = { message: 'Error!!!' };
 describe('User signup actions', () => {
   it('USER_SIGNUP_REQUEST', () => {
     expect(a.userSignupRequest()).toEqual({
@@ -20,8 +20,9 @@ describe('User signup actions', () => {
   });
 
   it('USER_SIGNUP_FAILURE', () => {
-    expect(a.userSignupFailure()).toEqual({
+    expect(a.userSignupFailure(error)).toEqual({
       type: 'USER_SIGNUP_FAILURE',
+      message: 'Error!!!',
     });
   });
 });
@@ -41,8 +42,9 @@ describe('User login actions', () => {
   });
 
   it('USER_LOGIN_FAILURE', () => {
-    expect(a.userLoginFailure()).toEqual({
+    expect(a.userLoginFailure(error)).toEqual({
       type: 'USER_LOGIN_FAILURE',
+      message: 'Error!!!',
     });
   });
 });
