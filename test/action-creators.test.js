@@ -4,8 +4,10 @@ const user = { name: 'Jake', email: 'nope@donthave.com' };
 const error = { message: 'Error!!!' };
 describe('User signup actions', () => {
   it('USER_SIGNUP_REQUEST', () => {
-    expect(a.userSignupRequest()).toEqual({
+    expect(a.userSignupRequest('nope@donthave.com', 'bigSecret')).toEqual({
       type: 'USER_SIGNUP_REQUEST',
+      email: 'nope@donthave.com',
+      password: 'bigSecret',
     });
   });
 
@@ -29,8 +31,10 @@ describe('User signup actions', () => {
 
 describe('User login actions', () => {
   it('USER_LOGIN_REQUEST', () => {
-    expect(a.userLoginRequest()).toEqual({
+    expect(a.userLoginRequest('nope@donthave.com', 'bigSecret')).toEqual({
       type: 'USER_LOGIN_REQUEST',
+      email: 'nope@donthave.com',
+      password: 'bigSecret',
     });
   });
 

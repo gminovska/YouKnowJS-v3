@@ -1,5 +1,7 @@
-export const userSignupRequest = () => ({
+export const userSignupRequest = (email, password) => ({
   type: 'USER_SIGNUP_REQUEST',
+  email,
+  password,
 });
 
 export const userSignupSuccess = user => ({
@@ -12,8 +14,10 @@ export const userSignupFailure = error => ({
   message: error.message,
 });
 
-export const userLoginRequest = () => ({
+export const userLoginRequest = (email, password) => ({
   type: 'USER_LOGIN_REQUEST',
+  email,
+  password,
 });
 
 export const userLoginSuccess = user => ({
