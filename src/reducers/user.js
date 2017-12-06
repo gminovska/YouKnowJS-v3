@@ -1,6 +1,6 @@
 const initialState = {
   isLoggedIn: false,
-  name: null,
+  email: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -9,14 +9,14 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         isLoggedIn: true,
-        name: action.payload.name,
+        email: action.payload.email,
       };
 
     case 'USER_LOGIN_SUCCESS':
       return {
         ...state,
         isLoggedIn: true,
-        name: action.payload.name,
+        email: action.payload.email,
       };
 
     default:
