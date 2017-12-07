@@ -22,8 +22,8 @@ const reducer = (state = initialState, action) => {
     case 'SET_USER':
       return {
         ...state,
-        isLoggedIn: true,
-        email: action.payload.email,
+        isLoggedIn: !!action.payload,
+        email: action.payload === null ? null : action.payload.email,
       };
 
     default:

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { FormControl, FormGroup, ControlLabel, Button } from 'react-bootstrap';
 import { auth } from 'firebase';
 
-import { userSignupRequest, setUser } from '../actions/user';
+import { userLoginRequest, setUser } from '../actions/user';
 
 class Tester extends React.Component {
   /**
@@ -17,7 +17,7 @@ class Tester extends React.Component {
       pass: '',
     };
   }
-  
+
   componentDidMount = () => {
     this.authListener = auth().onAuthStateChanged((user) => {
       this.props.update(user);
@@ -41,7 +41,7 @@ class Tester extends React.Component {
   }
 
   send = () => {
-    this.props.signup(this.state.name, this.state.pass);
+    this.props.login(this.state.name, this.state.pass);
   }
 
   /**
@@ -69,6 +69,10 @@ class Tester extends React.Component {
           >
             Send
           </Button>
+          <Button
+            onClick={() => { auth().signOut(); }}
+          >LogOut
+          </Button>
         </FormGroup>
       </div>
     );
@@ -76,7 +80,7 @@ class Tester extends React.Component {
 }
 
 Tester.propTypes = {
-  signup: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired,
   error: PropTypes.string,
   update: PropTypes.func.isRequired,
 };
@@ -86,8 +90,8 @@ const mapStateToProps = state => ({
   error: state.errors.message,
 });
 const mapDispatchToProps = dispatch => ({
-  signup(name, pass) {
-    dispatch(userSignupRequest(name, pass));
+  login(name, pass) {
+    dispatch(userLoginRequest(name, pass));
   },
   update(user) {
     dispatch(setUser(user));
