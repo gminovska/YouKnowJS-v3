@@ -1,4 +1,4 @@
-import firebase from 'firebase';
+import { auth } from 'firebase';
 import { put, takeEvery, call } from 'redux-saga/effects';
 
 import { userSignupFailure, userSignupSuccess } from '../actions/user';
@@ -10,7 +10,7 @@ import { userSignupFailure, userSignupSuccess } from '../actions/user';
  */
 export function* signupUser(action) {
   try {
-    const authUser = firebase.auth();
+    const authUser = auth();
     const user = yield authUser.createUserWithEmailAndPassword(action.email, action.password);
 
     yield put(userSignupSuccess(user));
