@@ -11,7 +11,7 @@ import { userSignupFailure, userSignupSuccess } from '../actions/user';
 export function* signupUser(action) {
   try {
     const authUser = auth();
-    const user = yield authUser.createUserWithEmailAndPassword(action.email, action.password);
+    const user = yield call([authUser, 'createUserWithEmailAndPassword'], action.email, action.password);
 
     yield put(userSignupSuccess(user));
   } catch (e) {

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { FormControl, FormGroup, ControlLabel, Button } from 'react-bootstrap';
 import { auth } from 'firebase';
 
-import { userLoginRequest, setUser } from '../actions/user';
+import { userLoginRequest, setUser, userSignupRequest } from '../actions/user';
 
 class Tester extends React.Component {
   /**
@@ -40,8 +40,12 @@ class Tester extends React.Component {
     });
   }
 
-  send = () => {
+  sendLogin = () => {
     this.props.login(this.state.name, this.state.pass);
+  }
+
+  sendSignup = () => {
+    this.props.signup(this.state.name, this.state.pass);
   }
 
   /**
@@ -65,9 +69,14 @@ class Tester extends React.Component {
             onChange={this.handlePassChange}
           />
           <Button
-            onClick={this.send}
+            onClick={this.sendLogin}
           >
-            Send
+            Login
+          </Button>
+          <Button
+            onClick={this.sendSignup}
+          >
+            Signup
           </Button>
           <Button
             onClick={() => { auth().signOut(); }}
@@ -81,6 +90,7 @@ class Tester extends React.Component {
 
 Tester.propTypes = {
   login: PropTypes.func.isRequired,
+  signup: PropTypes.func.isRequired,
   error: PropTypes.string,
   update: PropTypes.func.isRequired,
 };
@@ -95,6 +105,9 @@ const mapDispatchToProps = dispatch => ({
   },
   update(user) {
     dispatch(setUser(user));
+  },
+  signup(name, pass) {
+    dispatch(userSignupRequest(name, pass));
   },
 });
 

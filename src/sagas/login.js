@@ -11,7 +11,7 @@ import { userLoginFailure, userLoginSuccess } from '../actions/user';
 export function* loginUser(action) {
   try {
     const authUser = auth();
-    const user = yield authUser.signInWithEmailAndPassword(action.email, action.password);
+    const user = yield call([authUser, 'signInWithEmailAndPassword'], action.email, action.password);
 
     yield put(userLoginSuccess(user));
   } catch (e) {
