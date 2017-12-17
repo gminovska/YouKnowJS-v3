@@ -15,7 +15,7 @@
     font-size: 22px;
     text-decoration: none;
 
-    &:visited, &:hover, &:active {
+    &:link, &:visited, &:hover, &:active {
       text-decoration: none;
       color: $accent-color;
     }
@@ -27,7 +27,7 @@
     color: $main-font-color;
     text-decoration: none;
 
-    &:visited, &:hover, &:active {
+    &:link, &:visited, &:hover, &:active {
       text-decoration: none;
       color: $main-font-color;
     }
