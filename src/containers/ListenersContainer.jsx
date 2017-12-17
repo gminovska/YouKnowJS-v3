@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { auth } from 'firebase';
 
 import { setUser } from '../actions/user';
+import Routes from './Routes';
 
 
 class ListenersContainer extends React.Component {
@@ -22,9 +23,7 @@ class ListenersContainer extends React.Component {
    */
   render() {
     return (
-      <div>
-        Hello world!
-      </div>
+      <Routes />
     );
   }
 }
