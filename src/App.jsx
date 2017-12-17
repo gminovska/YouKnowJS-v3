@@ -2,14 +2,12 @@ import React from 'react';
 import { Provider } from 'react-redux';
 
 import store from './store';
-import Tester from './containers/Tester';
+import ListenersContainer from './containers/ListenersContainer';
 
 
 const App = () => (
   <Provider store={store} >
-    <div>
-      <Tester />
-    </div>
+    <ListenersContainer />
   </Provider>
 );
 

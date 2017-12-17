@@ -18,16 +18,6 @@ class Tester extends React.Component {
     };
   }
 
-  componentDidMount = () => {
-    this.authListener = auth().onAuthStateChanged((user) => {
-      this.props.update(user);
-    });
-  }
-
-  componentWillUnmount = () => {
-    this.authListener.off();
-  }
-
   handleNameChange = (e) => {
     this.setState({
       name: e.target.value,
