@@ -11,7 +11,7 @@ const Nav = () => (
     </div>
     <div>
       <Link to="/" className="primary-navbar__link">Home</Link>
-      <Link to="/quiz/12" className="primary-navbar__link">Quiz12</Link>
+      <Link to="/user/signup" className="primary-navbar__link">Signup</Link>
       <Link to="/quiz/8" className="primary-navbar__link">Quiz8</Link>
     </div>
   </nav>

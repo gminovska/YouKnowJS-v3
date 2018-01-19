@@ -2,6 +2,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
+import { reducer as form } from 'redux-form';
 
 import user from './reducers/user';
 import errors from './reducers/errors';
@@ -17,7 +18,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
   combineReducers({
-    user, errors, loaders, quizzes, currentQuiz,
+    user, errors, loaders, quizzes, currentQuiz, form,
   }),
   {},
   composeEnhancers(applyMiddleware(sagaMiddleware, logger)),
