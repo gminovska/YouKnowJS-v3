@@ -13,12 +13,6 @@
       "requireParamDescription": true,
       "requireReturnDescription": true
     }],
-    "require-jsdoc": ["error", {
-        "require": {
-            "FunctionDeclaration": true,
-            "MethodDefinition": true
-        }
-    }],
     "linebreak-style":"off",
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }]
   }
