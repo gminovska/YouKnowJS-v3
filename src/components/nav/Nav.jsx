@@ -1,8 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+
+import NavLinks from './NavLinks';
 
 const Nav = () => (
   <nav className="primary-navbar">
@@ -10,15 +11,9 @@ const Nav = () => (
       <Link to="/" className="primary-navbar__logo">YouKnowJS</Link>
     </div>
     <div>
-      <Link to="/" className="primary-navbar__link">Home</Link>
-      <Link to="/user/signup" className="primary-navbar__link">Signup</Link>
-      <Link to="/quiz/8" className="primary-navbar__link">Quiz8</Link>
+      <NavLinks />
     </div>
   </nav>
 );
-
-Nav.propTypes = {
-
-};
 
 export default Nav;

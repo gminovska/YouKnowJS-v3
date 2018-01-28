@@ -3,6 +3,7 @@ const initialState = {
   onLogin: false,
   onQuizzes: false,
   onCurrentQuiz: false,
+  onFetchUser: true,
 };
 
 const reducer = (state = initialState, action) => {
@@ -77,6 +78,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         onCurrentQuiz: false,
+      };
+
+    case 'SET_USER':
+      return {
+        ...state,
+        onFetchUser: false,
       };
 
     default:
