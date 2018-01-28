@@ -12,9 +12,9 @@ import { userLogout } from '../../actions/user';
 
 const UserLinks = ({ clickHandler }) => (
   <div>
-    <span role="button" onClick={clickHandler}>
+    <button onClick={clickHandler}>
       Logout
-    </span>
+    </button>
   </div>
 );
 
