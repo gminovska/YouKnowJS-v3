@@ -15,6 +15,13 @@ const reducer = (state = initialState, action) => {
         message: action.message,
       };
 
+    case 'USER_SIGNUP_SUCCESS':
+      return {
+        ...state,
+        onSignup: false,
+        message: '',
+      };
+
     case 'USER_LOGIN_FAILURE':
       return {
         ...state,

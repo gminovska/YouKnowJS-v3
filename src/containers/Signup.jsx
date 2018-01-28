@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 
-import SignupForm from '../components/SignupForm';
+import SignupForm from '../components/forms/SignupForm';
 import { userSignupRequest } from '../actions/user';
 
 class Signup extends React.Component {
