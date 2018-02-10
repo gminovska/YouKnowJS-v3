@@ -11,11 +11,9 @@ import SwitchWhen from '../../containers/utils/SwitchWhen';
 import { userLogout } from '../../actions/user';
 
 const UserLinks = ({ clickHandler }) => (
-  <div>
-    <button onClick={clickHandler}>
-      Logout
-    </button>
-  </div>
+  <button onClick={clickHandler}>
+    Logout
+  </button>
 );
 
 UserLinks.propTypes = {
