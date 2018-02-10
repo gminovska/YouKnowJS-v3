@@ -4,7 +4,7 @@ import { HashRouter, Route, Switch } from 'react-router-dom';
 
 import Home from './Home';
 import Quiz from './Quiz';
-import Login from './Login';
+import Login from './login/Login';
 import Signup from './signup/Signup';
 import Nav from '../components/nav/Nav';
 
