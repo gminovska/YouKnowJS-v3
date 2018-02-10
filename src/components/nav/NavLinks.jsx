@@ -10,14 +10,24 @@ import SwitchIf from '../../containers/utils/SwitchIf';
 import SwitchWhen from '../../containers/utils/SwitchWhen';
 import { userLogout } from '../../actions/user';
 
-const UserLinks = ({ clickHandler }) => (
-  <button onClick={clickHandler}>
-    Logout
-  </button>
+const extractName = email => (
+  email
+    ? email.split('@')[0]
+    : ''
+);
+
+const UserLinks = ({ clickHandler, name }) => (
+  <div>
+    Hello {name}!
+    <button onClick={clickHandler}>
+      Logout
+    </button>
+  </div>
 );
 
 UserLinks.propTypes = {
   clickHandler: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 const GuestLinks = () => (
@@ -27,10 +37,20 @@ const GuestLinks = () => (
   </div>
 );
 
-const NavLinks = ({ userLoggedIn, userDataFetched, logout }) => (
+const NavLinks = ({
+  userLoggedIn, userDataFetched, logout, userEmail,
+}) => (
   <SwitchIf test={userDataFetched}>
     <SwitchIf equals={true} test={userLoggedIn}>
-      <SwitchWhen equals={true} render={<UserLinks clickHandler={logout} />} />
+      <SwitchWhen
+        equals={true}
+        render={
+          <UserLinks
+            clickHandler={logout}
+            name={extractName(userEmail)}
+          />
+        }
+      />
       <SwitchWhen equals={false} render={<GuestLinks />} />
     </SwitchIf>
     <SwitchWhen equals={false} />
@@ -42,10 +62,12 @@ NavLinks.propTypes = {
   userLoggedIn: PropTypes.bool.isRequired,
   userDataFetched: PropTypes.bool.isRequired,
   logout: PropTypes.func.isRequired,
+  userEmail: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => ({
   userLoggedIn: state.user.isLoggedIn,
+  userEmail: state.user.email,
   userDataFetched: !state.loaders.onFetchUser,
 });
 
