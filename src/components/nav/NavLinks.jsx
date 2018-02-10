@@ -62,7 +62,11 @@ NavLinks.propTypes = {
   userLoggedIn: PropTypes.bool.isRequired,
   userDataFetched: PropTypes.bool.isRequired,
   logout: PropTypes.func.isRequired,
-  userEmail: PropTypes.string.isRequired,
+  userEmail: PropTypes.string,
+};
+
+NavLinks.defaultProps = {
+  userEmail: undefined,
 };
 
 const mapStateToProps = state => ({
