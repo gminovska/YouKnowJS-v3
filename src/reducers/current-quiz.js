@@ -1,6 +1,6 @@
 const initialState = null;
 
-const reducer = (state = initialState, action) => {
+const currentQuizReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'FETCH_CURRENT_QUIZ_SUCCESS':
       return Object.values(action.payload).map(q => ({
@@ -13,4 +13,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export default reducer;
+export default currentQuizReducer;

@@ -6,7 +6,7 @@ const initialState = {
   onFetchUser: true,
 };
 
-const reducer = (state = initialState, action) => {
+const loadersReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'USER_SIGNUP_REQUEST':
       return {
@@ -91,4 +91,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export default reducer;
+export default loadersReducer;
