@@ -52,7 +52,7 @@ describe('fetchQuiz saga', () => {
     const gen = fetchQuiz(action);
 
     expect(gen.next().value).toEqual(call([ref, 'once'], 'value'));
-    expect(gen.throw().value).toEqual(put(fetchQuizFailure()));
+    expect(gen.throw(new Error('sorry')).value).toEqual(put(fetchQuizFailure('sorry')));
   });
 });
 
