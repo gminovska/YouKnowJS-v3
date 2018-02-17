@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-const QuizThumbnail = ({ description, name }) => (
+const QuizThumbnail = ({ description, name, id }) => (
   <div>
     Thumbnail
-    {name}
+    <Link to={`/quiz/${id}`}>
+      {name}
+    </Link>
     {description}
   </div>
 );
@@ -12,6 +15,7 @@ const QuizThumbnail = ({ description, name }) => (
 QuizThumbnail.propTypes = {
   description: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default QuizThumbnail;

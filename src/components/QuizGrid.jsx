@@ -9,6 +9,7 @@ const QuizGrid = ({ quizzes }) => (
     {quizzes.map(quiz => (
       <QuizThumbnail
         key={quiz.id}
+        id={quiz.id}
         description={quiz.description}
         name={quiz.name}
       />
