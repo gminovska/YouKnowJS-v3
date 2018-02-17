@@ -18,7 +18,7 @@ export function* fetchQuiz(action) {
     if (data === null) {
       throw new Error('Sorry, no such quiz exists');
     } else {
-      yield put(fetchQuizSuccess(data));
+      yield put(fetchQuizSuccess(data, id));
     }
   } catch (e) {
     yield put(fetchQuizFailure(e.message));
