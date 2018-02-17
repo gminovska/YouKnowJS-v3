@@ -11,10 +11,13 @@ class Home extends React.Component {
   static propTypes = {
     fetchData: PropTypes.func.isRequired,
     showLoader: PropTypes.bool.isRequired,
+    data: PropTypes.arrayOf(PropTypes.object).isRequired,
   };
 
   componentDidMount() {
-    this.props.fetchData();
+    if (this.props.data.length === 0) {
+      this.props.fetchData();
+    }
   }
 
   render() {
@@ -28,6 +31,7 @@ class Home extends React.Component {
 
 const mapStateToProps = state => ({
   showLoader: state.loaders.onQuizzes,
+  data: state.quizzes,
 });
 
 const mapDispatchToProps = dispatch => ({
