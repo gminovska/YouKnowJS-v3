@@ -39,6 +39,7 @@ const errorsReducer = (state = initialState, action) => {
       return {
         ...state,
         onCurrentQuiz: true,
+        message: action.message,
       };
 
     default:

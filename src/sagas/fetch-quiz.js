@@ -13,11 +13,15 @@ export function* fetchQuiz(action) {
   const id = action.payload;
   const ref = database().ref(`quizzes-questions/${id}`);
   try {
-    const data = yield call([ref, 'once'], 'value');
-    console.log(data.val());
-    yield put(fetchQuizSuccess(data.val()));
+    const response = yield call([ref, 'once'], 'value');
+    const data = response.val();
+    if (data === null) {
+      throw new Error('Sorry, no such quiz exists');
+    } else {
+      yield put(fetchQuizSuccess(data));
+    }
   } catch (e) {
-    yield put(fetchQuizFailure());
+    yield put(fetchQuizFailure(e.message));
   }
 }
 

@@ -8,6 +8,7 @@ export const fetchQuizSuccess = currentQuiz => ({
   payload: currentQuiz,
 });
 
-export const fetchQuizFailure = () => ({
+export const fetchQuizFailure = message => ({
   type: 'FETCH_CURRENT_QUIZ_FAILURE',
+  message,
 });
