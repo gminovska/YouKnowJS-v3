@@ -2,13 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import Question from './Question';
 import { incrementCurrentQuestionIndex } from '../actions/current-quiz';
 
-const Quiz = ({ nextQuestion }) => (
-  <div>Quiz
-    <button onClick={nextQuestion}>CHANGE INDEX</button>
-  </div>
-);
+const Quiz = ({
+  nextQuestion, questions, currentIndex,
+}) => {
+  const isLast = currentIndex === questions.length - 1;
+
+  return (
+    <Question
+      question={questions[currentIndex]}
+      buttonText={isLast ? 'Finish' : 'Next Question'}
+      nextQuestion={isLast ? () => undefined : nextQuestion}
+    />
+  );
+};
 
 Quiz.propTypes = {
   questions: PropTypes.arrayOf(PropTypes.object).isRequired,

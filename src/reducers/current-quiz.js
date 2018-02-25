@@ -2,9 +2,9 @@ const initialState = {
   id: null,
   currentIndex: 0,
   questions: null,
-  lastQuestion: false,
 };
 
+// TODO remove info about answers being checked from the global state
 
 const currentQuizReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -21,7 +21,6 @@ const currentQuizReducer = (state = initialState, action) => {
     case 'INCREMENT_CURRENT_QUESTION_INDEX':
       return {
         ...state,
-        lastQuestion: state.currentIndex === state.questions.length - 1,
         currentIndex: state.currentIndex === state.questions.length - 1
           ? state.currentIndex
           : state.currentIndex + 1,

@@ -28,7 +28,7 @@ class QuizDataFetcher extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  showLoader: state.loaders.onCurrentQuiz,
+  showLoader: !state.currentQuiz.id,
 });
 
 const mapDisptachToProps = dispatch => ({
