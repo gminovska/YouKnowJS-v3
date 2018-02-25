@@ -3,11 +3,17 @@ export const fetchQuizRequest = id => ({
   payload: id,
 });
 
-export const fetchQuizSuccess = currentQuiz => ({
+export const fetchQuizSuccess = (questions, id) => ({
   type: 'FETCH_CURRENT_QUIZ_SUCCESS',
-  payload: currentQuiz,
+  questions,
+  id,
 });
 
-export const fetchQuizFailure = () => ({
+export const fetchQuizFailure = message => ({
   type: 'FETCH_CURRENT_QUIZ_FAILURE',
+  message,
+});
+
+export const incrementCurrentQuestionIndex = () => ({
+  type: 'INCREMENT_CURRENT_QUESTION_INDEX',
 });
