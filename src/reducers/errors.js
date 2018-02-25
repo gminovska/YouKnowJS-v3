@@ -6,7 +6,7 @@ const initialState = {
   message: '',
 };
 
-const reducer = (state = initialState, action) => {
+const errorsReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'USER_SIGNUP_FAILURE':
       return {
@@ -39,6 +39,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         onCurrentQuiz: true,
+        message: action.message,
       };
 
     default:
@@ -46,4 +47,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export default reducer;
+export default errorsReducer;

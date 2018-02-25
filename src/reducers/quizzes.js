@@ -1,6 +1,6 @@
 const initialState = [];
 
-const reducer = (state = initialState, action) => {
+const quizzesReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'FETCH_ALL_QUIZZES_SUCCESS':
       return Object.values(action.payload);
@@ -10,4 +10,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export default reducer;
+export default quizzesReducer;

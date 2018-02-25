@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
+import { Field } from 'redux-form';
 
 import TextField from './TextField';
 
@@ -17,7 +16,7 @@ const validatePass = value => (
     : undefined
 );
 
-const SignupForm = ({ handleSubmit, showErr, errMsg }) => (
+const UserForm = ({ handleSubmit, showErr, errMsg }) => (
   <div>
     <form onSubmit={handleSubmit}>
       <div>
@@ -53,16 +52,10 @@ const SignupForm = ({ handleSubmit, showErr, errMsg }) => (
   </div>
 );
 
-SignupForm.propTypes = {
+UserForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   showErr: PropTypes.bool.isRequired,
   errMsg: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = state => ({
-  showErr: state.errors.onSignup,
-  errMsg: state.errors.message,
-});
-
-
-export default connect(mapStateToProps)(reduxForm({ form: 'signup' })(SignupForm));
+export default UserForm;
