@@ -23,6 +23,13 @@ class Question extends React.Component {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.length = nextProps.question.answers.length;
+    this.setState({
+      answers: new Array(this.length).fill(false),
+    });
+  }
+
   handleChange = (i) => {
     const answers = new Array(this.length).fill(false);
     answers[i] = true;
