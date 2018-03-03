@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
+import { incrementScore } from '../actions/current-quiz';
 import AnswersView from '../components/question_views/AnswersView';
 import ExplanationView from '../components/question_views/ExplanationView';
 
@@ -15,6 +17,7 @@ class Question extends React.Component {
     nextQuestion: PropTypes.func.isRequired,
     buttonText: PropTypes.string.isRequired,
     isLastQuestion: PropTypes.bool.isRequired,
+    handleCorrectAnswer: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -35,6 +38,17 @@ class Question extends React.Component {
 
   changeViews = () => {
     this.setState({ displayExplanation: !this.state.displayExplanation });
+  }
+
+  checkAnswer = () => {
+    const checkedAnswerIndex = this.state.answers.indexOf(true);
+    const { answers } = this.props.question;
+    const answerIsCorrect = answers[checkedAnswerIndex].correct;
+    console.log(answerIsCorrect);
+    this.changeViews();
+    if (answerIsCorrect) {
+      this.props.handleCorrectAnswer();
+    }
   }
 
   handleChange = (i) => {
@@ -59,7 +73,7 @@ class Question extends React.Component {
         answers={answers}
         checked={this.state.answers}
         handleChange={this.handleChange}
-        seeExplanation={this.changeViews}
+        seeExplanation={this.checkAnswer}
       />
     );
 
@@ -80,4 +94,10 @@ class Question extends React.Component {
   }
 }
 
-export default Question;
+const mapDispatchToProps = dispatch => ({
+  handleCorrectAnswer() {
+    dispatch(incrementScore());
+  },
+});
+
+export default connect(undefined, mapDispatchToProps)(Question);

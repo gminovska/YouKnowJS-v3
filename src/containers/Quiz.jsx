@@ -31,7 +31,6 @@ const mapStateToProps = state => ({
 
 const mapDisptachToProps = dispatch => ({
   nextQuestion() {
-    console.log('NEXT QUESTION CALLED');
     dispatch(incrementCurrentQuestionIndex());
   },
 });

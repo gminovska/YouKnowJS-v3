@@ -17,3 +17,7 @@ export const fetchQuizFailure = message => ({
 export const incrementCurrentQuestionIndex = () => ({
   type: 'INCREMENT_CURRENT_QUESTION_INDEX',
 });
+
+export const incrementScore = () => ({
+  type: 'INCREMENT_SCORE',
+});
