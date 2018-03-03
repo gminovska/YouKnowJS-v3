@@ -5,9 +5,7 @@ import { connect } from 'react-redux';
 import Question from './Question';
 import { incrementCurrentQuestionIndex } from '../actions/current-quiz';
 
-const Quiz = ({
-  nextQuestion, questions, currentIndex,
-}) => {
+const Quiz = ({ nextQuestion, questions, currentIndex }) => {
   const isLast = currentIndex === questions.length - 1;
 
   return (
