@@ -11,6 +11,7 @@ const Quiz = ({ nextQuestion, questions, currentIndex }) => {
   return (
     <Question
       question={questions[currentIndex]}
+      isLastQuestion={isLast}
       buttonText={isLast ? 'Finish' : 'Next Question'}
       nextQuestion={isLast ? () => undefined : nextQuestion}
     />
@@ -30,6 +31,7 @@ const mapStateToProps = state => ({
 
 const mapDisptachToProps = dispatch => ({
   nextQuestion() {
+    console.log('NEXT QUESTION CALLED');
     dispatch(incrementCurrentQuestionIndex());
   },
 });

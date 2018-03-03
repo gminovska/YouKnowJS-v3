@@ -2,9 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Answer = ({
-  text, checked, onChange, index,
-}) => (
+const Answer = ({ text, checked, onChange, index }) => (
   <div>
     <input
       type="radio"

@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Answer from '../components/Answer';
+import AnswersView from '../components/question_views/AnswersView';
+import ExplanationView from '../components/question_views/ExplanationView';
 
 class Question extends React.Component {
   static propTypes = {
@@ -13,6 +14,7 @@ class Question extends React.Component {
     }).isRequired,
     nextQuestion: PropTypes.func.isRequired,
     buttonText: PropTypes.string.isRequired,
+    isLastQuestion: PropTypes.bool.isRequired,
   };
 
   constructor(props) {
@@ -20,6 +22,7 @@ class Question extends React.Component {
     this.length = this.props.question.answers.length;
     this.state = {
       answers: new Array(this.length).fill(false),
+      displayExplanation: false,
     };
   }
 
@@ -30,6 +33,10 @@ class Question extends React.Component {
     });
   }
 
+  changeViews = () => {
+    this.setState({ displayExplanation: !this.state.displayExplanation });
+  }
+
   handleChange = (i) => {
     const answers = new Array(this.length).fill(false);
     answers[i] = true;
@@ -37,25 +44,37 @@ class Question extends React.Component {
   }
 
   render() {
-    const { question, nextQuestion, buttonText } = this.props;
-    const { text, answers } = question;
+    const { question, nextQuestion, buttonText, isLastQuestion } = this.props;
+    const { text, answers, explanation } = question;
+    const getNextQuestion = () => {
+      nextQuestion();
+      if (!isLastQuestion) {
+        this.changeViews();
+      }
+    };
+
+    const answersView = (
+      <AnswersView
+        questionText={text}
+        answers={answers}
+        checked={this.state.answers}
+        handleChange={this.handleChange}
+        seeExplanation={this.changeViews}
+      />
+    );
+
+    const explanationView = (
+      <ExplanationView
+        explanationText={explanation}
+        nextQuestion={getNextQuestion}
+        buttonText={buttonText}
+      />
+    );
 
     return (
       <div>
-        <p>{text}</p>
-        {answers.map((answer, index) => (
-          <Answer
-            index={index}
-            key={answer.text}
-            text={answer.text}
-            checked={this.state.answers[index]}
-            onChange={this.handleChange}
-          />
-        ))}
+        {this.state.displayExplanation ? explanationView : answersView}
         {/* TODO: implement logic for keeping track of the number of correct answers user has provided */}
-        <button onClick={nextQuestion}>
-          {buttonText}
-        </button>
       </div>
     );
   }
