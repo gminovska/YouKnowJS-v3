@@ -20,6 +20,7 @@ class Home extends React.Component {
     }
   }
 
+  // TODO: Handle a case when error is returned from the firebase
   render() {
     return (
       this.props.showLoader
