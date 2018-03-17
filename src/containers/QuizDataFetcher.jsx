@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { fetchQuizRequest } from '../actions/current-quiz';
-import Quiz from './Quiz';
 import Loader from '../components/Loader';
+import QuizData from '../components/QuizData';
 
 class QuizDataFetcher extends React.Component {
   static propTypes = {
@@ -22,13 +22,13 @@ class QuizDataFetcher extends React.Component {
     return (
       this.props.showLoader
         ? <Loader />
-        : <Quiz />
+        : <QuizData />
     );
   }
 }
 
 const mapStateToProps = state => ({
-  showLoader: !state.currentQuiz.id,
+  showLoader: state.loaders.onCurrentQuiz,
 });
 
 const mapDisptachToProps = dispatch => ({
