@@ -13,14 +13,26 @@ class QuizDataFetcher extends React.Component {
     showLoader: PropTypes.bool.isRequired,
   };
 
+  constructor() {
+    super();
+    this.state = {
+      isFirstRender: true,
+    };
+  }
+
   componentDidMount() {
     const { id } = this.props.match.params;
     this.props.fetchData(id);
+    // A hack to avoid rendering <QuizData> on the very first render.
+    // See https://github.com/reactjs/react-redux/issues/210
+    /* eslint-disable react/no-did-mount-set-state */
+    this.setState({ isFirstRender: false });
+    /* eslint-enable */
   }
 
   render() {
     return (
-      this.props.showLoader
+      this.props.showLoader || this.state.isFirstRender
         ? <Loader />
         : <QuizData />
     );
