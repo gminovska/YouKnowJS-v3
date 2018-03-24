@@ -4,6 +4,7 @@ const initialState = {
   questions: null,
   score: 0,
   isLastQuestion: false,
+  displayExplanation: false,
 };
 
 // TODO remove info about answers being checked from the global state
@@ -33,6 +34,12 @@ const currentQuizReducer = (state = initialState, action) => {
       return {
         ...state,
         score: state.score + 1,
+      };
+
+    case 'TOGGLE_EXPLANATION':
+      return {
+        ...state,
+        displayExplanation: !state.showExplanation,
       };
 
     default:

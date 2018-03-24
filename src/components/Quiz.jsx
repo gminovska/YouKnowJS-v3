@@ -1,24 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-class Quiz extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      displayExplanation: false,
-    };
-  }
+import Question from './Question';
 
-  switchViews = () => {
-    this.setState({ displayExplanation: !this.state.displayExplanation });
-  }
+const Quiz = ({ displayExplanation }) => (
+  displayExplanation
+    ? <div>Explanation yo</div>
+    : <Question />
+);
 
-  render() {
-    const { displayExplanation } = this.state;
+Quiz.propTypes = {
+  displayExplanation: PropTypes.bool.isRequired,
+};
 
-    return (
-      displayExplanation
-        ? <div>Question Component</div>
-        : <div>Explanation Component</div>
-    );
-  }
-}
+const mapStateToProps = state => ({
+  displayExplanation: state.currentQuiz.displayExplanation,
+});
+
+export default connect(mapStateToProps)(Quiz);

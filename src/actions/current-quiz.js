@@ -21,3 +21,7 @@ export const incrementCurrentQuestionIndex = () => ({
 export const incrementScore = () => ({
   type: 'INCREMENT_SCORE',
 });
+
+export const toggleExplanation = () => ({
+  type: 'TOGGLE_EXPLANATION',
+});
