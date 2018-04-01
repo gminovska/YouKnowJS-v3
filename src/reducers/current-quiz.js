@@ -45,8 +45,6 @@ const currentQuizReducer = (state = initialState, action) => {
       };
 
     case 'SUBMIT_ANSWER':
-      console.log('===========================================')
-      console.log(checkAnswer(state.questions[state.currentIndex].answers, action.answer));
       return {
         ...state,
         score: checkAnswer(state.questions[state.currentIndex].answers, action.answer)
