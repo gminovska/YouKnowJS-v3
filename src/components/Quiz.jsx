@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import Question from './Question';
+import Explanation from './Explanation';
 
 const Quiz = ({ displayExplanation }) => (
   displayExplanation
-    ? <div>Explanation yo</div>
+    ? <Explanation />
     : <Question />
 );
 

@@ -39,7 +39,7 @@ const currentQuizReducer = (state = initialState, action) => {
     case 'TOGGLE_EXPLANATION':
       return {
         ...state,
-        displayExplanation: !state.showExplanation,
+        displayExplanation: !state.displayExplanation,
       };
 
     default:

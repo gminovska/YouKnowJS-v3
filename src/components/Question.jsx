@@ -3,27 +3,21 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { toggleExplanation } from '../actions/current-quiz';
+import AnswersList from './AnswersList';
 
-const Question = ({ question, showExplanation }) => (
+const Question = ({ question, submitAnswer }) => (
   <div>
     <p>{question.text}</p>
-    <div>
-      {
-        question.answers.map(answer => (
-          <label htmlFor="answer">
-            {answer.text}
-            <input type="radio" name="answer" />
-          </label>
-        ))
-      }
-    </div>
-    <button onClick={showExplanation}>
-      Submit answer
-    </button>
+    <AnswersList
+      answers={question.answers}
+      multipleChoice={question.multipleChoice}
+      onSubmit={submitAnswer}
+    />
   </div>
 );
 
 Question.propTypes = {
+  submitAnswer: PropTypes.func.isRequired,
   question: PropTypes.shape({
     answers: PropTypes.array,
     explanation: PropTypes.string,
@@ -37,7 +31,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  showExplanation() {
+  submitAnswer(v) {
+    console.log('------------------------------------------------------');
+    console.log(v);
     dispatch(toggleExplanation());
   },
 });
