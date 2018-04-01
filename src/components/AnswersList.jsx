@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 
+// TODO: Add validation to ensure user checks at least one radio / checkbox
+
 const AnswersList = ({ answers, multipleChoice, handleSubmit }) => (
   <form onSubmit={handleSubmit}>
     {
@@ -11,7 +13,7 @@ const AnswersList = ({ answers, multipleChoice, handleSubmit }) => (
           <Field
             type={multipleChoice ? 'checkbox' : 'radio'}
             component="input"
-            name="answer"
+            name={multipleChoice ? text : 'answer'}
             value={text}
           />
         </label>

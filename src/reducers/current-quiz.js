@@ -1,4 +1,5 @@
-import checkAnswer from '../utils/checkAnswer';
+import checkSingleChoiceAnswer from '../utils/checkSingleChoiceAnswer';
+import checkMultipleChoiceAnswer from '../utils/checkMultipleChoiceAnswer';
 
 const initialState = {
   id: null,
@@ -44,12 +45,21 @@ const currentQuizReducer = (state = initialState, action) => {
         displayExplanation: !state.displayExplanation,
       };
 
-    case 'SUBMIT_ANSWER':
+    case 'SUBMIT_SINGLE_CHOICE_ANSWER':
       return {
         ...state,
-        score: checkAnswer(state.questions[state.currentIndex].answers, action.answer)
+        score: checkSingleChoiceAnswer(state.questions[state.currentIndex].answers, action.answer)
           ? state.score + 1
           : state.score,
+      };
+
+    case 'SUBMIT_MULTIPLE_CHOICE_ANSWER':
+      return {
+        ...state,
+        score: checkMultipleChoiceAnswer(
+          state.questions[state.currentIndex].answers,
+          action.answers,
+        ) ? state.score + 1 : state.score,
       };
 
     default:

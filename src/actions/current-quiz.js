@@ -26,7 +26,12 @@ export const toggleExplanation = () => ({
   type: 'TOGGLE_EXPLANATION',
 });
 
-export const submitAnswer = answer => ({
-  type: 'SUBMIT_ANSWER',
+export const submitSingleChoiceAnswer = answer => ({
+  type: 'SUBMIT_SINGLE_CHOICE_ANSWER',
   answer,
+});
+
+export const submitMultipleChoiceAnswer = answers => ({
+  type: 'SUBMIT_MULTIPLE_CHOICE_ANSWER',
+  answers,
 });
