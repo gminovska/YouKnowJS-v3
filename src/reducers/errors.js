@@ -42,6 +42,20 @@ const errorsReducer = (state = initialState, action) => {
         message: action.message,
       };
 
+    case 'FETCH_CURRENT_QUIZ_SUCCESS':
+      return {
+        ...state,
+        onCurrentQuiz: false,
+        message: '',
+      };
+
+    case 'FETCH_ALL_QUIZZES_SUCCESS':
+      return {
+        ...state,
+        onQuizzes: false,
+        message: '',
+      };
+
     default:
       return state;
   }

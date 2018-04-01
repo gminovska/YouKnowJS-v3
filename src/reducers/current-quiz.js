@@ -1,10 +1,16 @@
+import checkSingleChoiceAnswer from '../utils/checkSingleChoiceAnswer';
+import checkMultipleChoiceAnswer from '../utils/checkMultipleChoiceAnswer';
+
 const initialState = {
   id: null,
   currentIndex: 0,
   questions: null,
-  lastQuestion: false,
+  score: 0,
+  isLastQuestion: false,
+  displayExplanation: false,
 };
 
+// TODO remove info about answers being checked from the global state
 
 const currentQuizReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -21,10 +27,39 @@ const currentQuizReducer = (state = initialState, action) => {
     case 'INCREMENT_CURRENT_QUESTION_INDEX':
       return {
         ...state,
-        lastQuestion: state.currentIndex === state.questions.length - 1,
-        currentIndex: state.currentIndex === state.questions.length - 1
-          ? state.currentIndex
-          : state.currentIndex + 1,
+        ...state.currentIndex === state.questions.length - 1
+          && { currentIndex: state.currentIndex, isLastQuestion: true },
+        ...state.currentIndex !== state.questions.length - 1
+          && { currentIndex: state.currentIndex + 1 },
+      };
+
+    case 'INCREMENT_SCORE':
+      return {
+        ...state,
+        score: state.score + 1,
+      };
+
+    case 'TOGGLE_EXPLANATION':
+      return {
+        ...state,
+        displayExplanation: !state.displayExplanation,
+      };
+
+    case 'SUBMIT_SINGLE_CHOICE_ANSWER':
+      return {
+        ...state,
+        score: checkSingleChoiceAnswer(state.questions[state.currentIndex].answers, action.answer)
+          ? state.score + 1
+          : state.score,
+      };
+
+    case 'SUBMIT_MULTIPLE_CHOICE_ANSWER':
+      return {
+        ...state,
+        score: checkMultipleChoiceAnswer(
+          state.questions[state.currentIndex].answers,
+          action.answers,
+        ) ? state.score + 1 : state.score,
       };
 
     default:
