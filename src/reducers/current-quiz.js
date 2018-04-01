@@ -1,3 +1,5 @@
+import checkAnswer from '../utils/checkAnswer';
+
 const initialState = {
   id: null,
   currentIndex: 0,
@@ -40,6 +42,16 @@ const currentQuizReducer = (state = initialState, action) => {
       return {
         ...state,
         displayExplanation: !state.displayExplanation,
+      };
+
+    case 'SUBMIT_ANSWER':
+      console.log('===========================================')
+      console.log(checkAnswer(state.questions[state.currentIndex].answers, action.answer));
+      return {
+        ...state,
+        score: checkAnswer(state.questions[state.currentIndex].answers, action.answer)
+          ? state.score + 1
+          : state.score,
       };
 
     default:

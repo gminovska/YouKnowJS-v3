@@ -2,22 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { toggleExplanation } from '../actions/current-quiz';
+import { toggleExplanation, submitAnswer } from '../actions/current-quiz';
 import AnswersList from './AnswersList';
 
-const Question = ({ question, submitAnswer }) => (
+const Question = ({ question, submit }) => (
   <div>
     <p>{question.text}</p>
     <AnswersList
       answers={question.answers}
       multipleChoice={question.multipleChoice}
-      onSubmit={submitAnswer}
+      onSubmit={submit}
     />
   </div>
 );
 
 Question.propTypes = {
-  submitAnswer: PropTypes.func.isRequired,
+  submit: PropTypes.func.isRequired,
   question: PropTypes.shape({
     answers: PropTypes.array,
     explanation: PropTypes.string,
@@ -31,9 +31,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  submitAnswer(v) {
-    console.log('------------------------------------------------------');
-    console.log(v);
+  submit(values) {
+    dispatch(submitAnswer(values.answer));
     dispatch(toggleExplanation());
   },
 });

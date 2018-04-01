@@ -25,3 +25,8 @@ export const incrementScore = () => ({
 export const toggleExplanation = () => ({
   type: 'TOGGLE_EXPLANATION',
 });
+
+export const submitAnswer = answer => ({
+  type: 'SUBMIT_ANSWER',
+  answer,
+});
