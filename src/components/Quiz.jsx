@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 
 import Question from './Question';
 import Explanation from './Explanation';
-import QuizSummary from './QuizSummary';
+import QuizSummaryContainer from '../containers/QuizSummaryContainer';
 
 const Quiz = ({ isFinished, displayExplanation }) => {
-  if (isFinished) return <QuizSummary />;
+  if (isFinished) return <QuizSummaryContainer />;
   if (displayExplanation) return <Explanation />;
   return <Question />;
 };

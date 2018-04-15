@@ -35,3 +35,5 @@ export const submitMultipleChoiceAnswer = answers => ({
   type: 'SUBMIT_MULTIPLE_CHOICE_ANSWER',
   answers,
 });
+
+// TODO: Clear currentQuiz after the quiz is finished
