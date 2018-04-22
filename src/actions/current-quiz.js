@@ -35,3 +35,7 @@ export const submitMultipleChoiceAnswer = answers => ({
   type: 'SUBMIT_MULTIPLE_CHOICE_ANSWER',
   answers,
 });
+
+export const resetCurrentQuiz = () => ({
+  type: 'RESET_CURRENT_QUIZ',
+});

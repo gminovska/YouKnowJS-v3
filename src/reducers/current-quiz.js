@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 import checkSingleChoiceAnswer from '../utils/checkSingleChoiceAnswer';
 import checkMultipleChoiceAnswer from '../utils/checkMultipleChoiceAnswer';
 
@@ -7,6 +8,7 @@ const initialState = {
   questions: null,
   score: 0,
   isLastQuestion: false,
+  isAnswerCorrect: null,
   displayExplanation: false,
 };
 
@@ -45,23 +47,27 @@ const currentQuizReducer = (state = initialState, action) => {
         displayExplanation: !state.displayExplanation,
       };
 
-    case 'SUBMIT_SINGLE_CHOICE_ANSWER':
+    case 'SUBMIT_SINGLE_CHOICE_ANSWER': {
+      const answers = state.questions[state.currentIndex].answers;
+      const isCorrect = checkSingleChoiceAnswer(answers, action.answer);
       return {
         ...state,
-        score: checkSingleChoiceAnswer(state.questions[state.currentIndex].answers, action.answer)
-          ? state.score + 1
-          : state.score,
+        isAnswerCorrect: isCorrect,
+        score: isCorrect ? state.score + 1 : state.score,
       };
-
-    case 'SUBMIT_MULTIPLE_CHOICE_ANSWER':
+    }
+    case 'SUBMIT_MULTIPLE_CHOICE_ANSWER': {
+      const answers = state.questions[state.currentIndex].answers;
+      const isCorrect = checkMultipleChoiceAnswer(answers, action.answers);
       return {
         ...state,
-        score: checkMultipleChoiceAnswer(
-          state.questions[state.currentIndex].answers,
-          action.answers,
-        ) ? state.score + 1 : state.score,
+        isAnswerCorrect: isCorrect,
+        score: isCorrect ? state.score + 1 : state.score,
       };
-
+    }
+    case 'RESET_CURRENT_QUIZ': {
+      return initialState;
+    }
     default:
       return state;
   }
