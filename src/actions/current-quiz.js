@@ -36,4 +36,6 @@ export const submitMultipleChoiceAnswer = answers => ({
   answers,
 });
 
-// TODO: Clear currentQuiz after the quiz is finished
+export const resetCurrentQuiz = () => ({
+  type: 'RESET_CURRENT_QUIZ',
+});

@@ -65,6 +65,9 @@ const currentQuizReducer = (state = initialState, action) => {
         score: isCorrect ? state.score + 1 : state.score,
       };
     }
+    case 'RESET_CURRENT_QUIZ': {
+      return initialState;
+    }
     default:
       return state;
   }
