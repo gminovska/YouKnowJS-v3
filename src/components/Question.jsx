@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { SubmissionError } from 'redux-form';
 
 import {
   toggleExplanation,
@@ -37,12 +38,20 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   submitSingle(values) {
-    dispatch(submitSingleChoiceAnswer(values.answer));
-    dispatch(toggleExplanation());
+    try {
+      dispatch(submitSingleChoiceAnswer(values.answer));
+      dispatch(toggleExplanation());
+    } catch (err) {
+      throw new SubmissionError({ answer: 'No answer error', _error: 'Please select an answer' });
+    }
   },
   submitMultiple(values) {
-    dispatch(submitMultipleChoiceAnswer(values));
-    dispatch(toggleExplanation());
+    if (Object.keys(values).length !== 0) {
+      dispatch(submitMultipleChoiceAnswer(values));
+      dispatch(toggleExplanation());
+    } else {
+      throw new SubmissionError({ answer: 'No answer error', _error: 'Please select an answer' });
+    }
   },
 });
 
