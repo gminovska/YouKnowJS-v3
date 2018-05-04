@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 
-// TODO: Add validation to ensure user checks at least one radio / checkbox
-
 const AnswersList = ({ answers, multipleChoice, handleSubmit, error }) => (
   <form onSubmit={handleSubmit}>
     {
@@ -31,6 +29,9 @@ AnswersList.propTypes = {
   multipleChoice: PropTypes.bool.isRequired,
   handleSubmit: PropTypes.func.isRequired,
   error: PropTypes.string,
+};
+AnswersList.defaultProps = {
+  error: undefined,
 };
 
 export default reduxForm({ form: 'answers' })(AnswersList);
