@@ -12,7 +12,7 @@ const initialState = {
   displayExplanation: false,
 };
 
-// TODO remove info about answers being checked from the global state
+// TODO remove info about answers being checked from the global state (in Firebase)
 
 const currentQuizReducer = (state = initialState, action) => {
   switch (action.type) {
