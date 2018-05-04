@@ -5,6 +5,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { Menu } from 'semantic-ui-react';
 
 import SwitchIf from '../../containers/utils/SwitchIf';
 import SwitchWhen from '../../containers/utils/SwitchWhen';
@@ -17,12 +18,12 @@ const extractName = email => (
 );
 
 const UserLinks = ({ clickHandler, name }) => (
-  <div>
-    Hello {name}!
-    <button onClick={clickHandler}>
+  <React.Fragment>
+    <Menu.Item>Hello {name}!</Menu.Item>
+    <Menu.Item onClick={clickHandler}>
       Logout
-    </button>
-  </div>
+    </Menu.Item>
+  </React.Fragment>
 );
 
 UserLinks.propTypes = {
@@ -31,10 +32,10 @@ UserLinks.propTypes = {
 };
 
 const GuestLinks = () => (
-  <div>
-    <Link to="/user/login" className="primary-navbar__link">Login</Link>
-    <Link to="/user/signup" className="primary-navbar__link">Signup</Link>
-  </div>
+  <React.Fragment>
+    <Menu.Item><Link to="/user/login" className="primary-navbar__link">Login</Link></Menu.Item>
+    <Menu.Item><Link to="/user/signup" className="primary-navbar__link">Signup</Link></Menu.Item>
+  </React.Fragment>
 );
 
 const NavLinks = ({
