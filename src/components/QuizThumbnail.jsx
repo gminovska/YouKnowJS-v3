@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Card, Button, Image } from 'semantic-ui-react';
 
 const QuizThumbnail = ({ description, name, id, img }) => (
-  <Card raized >
+  <Card raised >
     <Image style={{ height: '300px', objectFit: 'scale-down' }} size="medium" src={img} />
     <Card.Content>
       <Card.Header>

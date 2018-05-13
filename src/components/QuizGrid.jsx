@@ -1,22 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Grid } from 'semantic-ui-react';
 import QuizThumbnail from './QuizThumbnail';
 
 const QuizGrid = ({ quizzes }) => (
-  <Grid container stackable columns={3}>
+  <div className="quiz-grid__container">
     {quizzes.map(quiz => (
-      <Grid.Column key={quiz.id}>
+      <div className="quiz-grid__element" key={quiz.id} mobile={16} tablet={8} computer={4}>
         <QuizThumbnail
           id={quiz.id}
           description={quiz.description}
           name={quiz.name}
           img={quiz.imgUrl}
         />
-      </Grid.Column>
+      </div>
     ))}
-  </Grid>
+  </div>
 );
 
 QuizGrid.propTypes = {
