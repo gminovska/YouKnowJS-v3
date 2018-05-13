@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 const TextField = ({ input, type, meta: { touched, error } }) => (
   <div>
     <input type={type} {...input} />
-    <div>
-      {touched && error && <span>{error}</span>}
+    <div className="user-form__error">
+      {touched && error}
     </div>
   </div>
 );

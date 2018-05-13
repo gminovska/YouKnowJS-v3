@@ -1,0 +1,28 @@
+.user-form__wrapper {
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-form {
+  padding: 20px;
+}
+
+.user-form__error {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  color: #ed2121;
+  font-size: 13px;
+}
+
+.user-form__header {
+  margin: 0;
+}
+
+.user-form__button {
+  display: flex;
+  justify-content: flex-end;
+}

@@ -14,7 +14,7 @@ class Signup extends React.Component {
 
   render() {
     return (
-      <SignupForm onSubmit={this.submit} />
+      <SignupForm onSubmit={this.submit} headerText="Sign up" />
     );
   }
 }
