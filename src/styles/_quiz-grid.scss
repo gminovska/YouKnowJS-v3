@@ -1,0 +1,18 @@
+.quiz-grid__container {
+  display: flex;
+  flex-flow: row wrap;
+  width: 1110px;
+  margin:  50px auto;
+
+  @media screen and (max-width: 1200px) {
+    width: 740px;
+  }
+
+  @media screen and (max-width: 740px) {
+    width: 370px;
+  }
+}
+
+.quiz-grid__element {
+  margin: 20px 40px;
+}

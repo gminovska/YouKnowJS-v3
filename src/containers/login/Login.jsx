@@ -18,7 +18,7 @@ class Login extends React.Component {
 
   render() {
     return (
-      <LoginForm onSubmit={this.submit} />
+      <LoginForm onSubmit={this.submit} headerText="Log in" />
     );
   }
 }

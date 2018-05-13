@@ -1,19 +1,17 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Menu } from 'semantic-ui-react';
 
 import NavLinks from './NavLinks';
 
 const Nav = () => (
-  <nav className="primary-navbar">
-    <div>
-      <Link to="/" className="primary-navbar__logo">YouKnowJS</Link>
-    </div>
-    <div>
+  <Menu inverted>
+    <Menu.Item><Link to="/" >YouKnowJS</Link></Menu.Item>
+    <Menu.Menu position="right">
       <NavLinks />
-    </div>
-  </nav>
+    </Menu.Menu>
+  </Menu>
 );
 
 export default Nav;
