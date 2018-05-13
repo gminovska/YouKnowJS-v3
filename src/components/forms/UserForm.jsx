@@ -17,7 +17,6 @@ const validatePass = value => (
     : undefined
 );
 
-// TODO: Handle a case when login / signup fails (not because of failed validation)
 const UserForm = ({ handleSubmit, showErr, errMsg, headerText }) => (
   <div className="user-form__wrapper">
     <Card>
